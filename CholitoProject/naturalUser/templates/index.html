@@ -8,16 +8,11 @@
 {% block content %}
 
         {% if user.is_authenticated %}
-            <map name="image-map">
                <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: -33.448, lng: -70.669},
           zoom: 6
         });
         infoWindow = new google.maps.InfoWindow;
@@ -56,17 +51,13 @@
     </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFsDodp5OfX3rRztKXGKaLmN4C10Rj0wA&callback=myMap"></script>
-            </map>
+            
         {% else %}
                <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: -33.448, lng: -70.669},
           zoom: 6
         });
         infoWindow = new google.maps.InfoWindow;
@@ -105,7 +96,7 @@
     </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFsDodp5OfX3rRztKXGKaLmN4C10Rj0wA&callback=myMap"></script>
-            </map>
+      
         {% endif %}
 
 {% endblock %}
