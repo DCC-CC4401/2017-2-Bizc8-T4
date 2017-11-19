@@ -76,12 +76,7 @@
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
-        var markerOne = new google.maps.Marker({
-            position: centerOne
-
-        });
-        markerOne.setMap(map);
-        infowindow.open(map, markerOne);
+        
       }
     </script>
     <script async defer
