@@ -9,14 +9,43 @@
 
 <div id="map" style="width:1350px;height:700px;background:yellow"></div>
     <script>
+      	
+ 
       function initMap() {
         var infoWindow;
-        var beau850 = {lat: -33.457785, lng: -70.663808};
+        var beau850 = {lat: -33.4400124, lng: -70.6782374};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: beau850
         });
         infoWindow = new google.maps.InfoWindow;
+	var marker1 = new google.maps.Marker({
+            position: {lat: -33.458773, lng: -70.663807},
+	    url: '',
+	    icon: '',
+            map: map
+        });
+	var marker2 = new google.maps.Marker({
+            position: {lat: -33.456773, lng: -70.665807},
+	    url: '',
+            map: map
+
+        });
+	var marker3 = new google.maps.Marker({
+            position: {lat: -33.458786, lng: -70.660819},
+	    url: '',
+            map: map
+        });
+	    google.maps.event.addListener(marker1, 'click', function() {
+	      window.location.href = marker1.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -33,7 +62,6 @@
     fillOpacity: 0.4
   });
         myCity.setMap(map);
-
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -42,16 +70,18 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-
-
-
       }
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
+        var markerOne = new google.maps.Marker({
+            position: centerOne
+
+        });
+        markerOne.setMap(map);
+        infowindow.open(map, markerOne);
       }
     </script>
     <script async defer
@@ -64,8 +94,18 @@
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
 Both of these plugins are recommended to enhance the
 user experience.
-
 <script>
+
+    function placeMarker(map, location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content: 'Nombre ONG'
+        });
+        infowindow.open(map, center);
+    }
     function myMap() {
         var mapCanvas = document.getElementById("map");
         var myCenter = new google.maps.LatLng(-33.457394, -70.664601);
@@ -91,23 +131,8 @@ user experience.
         var infowindow = new google.maps.InfoWindow({
             content: "ONG Favorita"
         });
-        var markerOne = new google.maps.Marker({
-            position: centerOne,
-            icon: "favorito.png"
-        });
-        markerOne.setMap(map);
-        infowindow.open(map, markerOne);
-    }
 
-    function placeMarker(map, location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
-        var infowindow = new google.maps.InfoWindow({
-            content: 'Nombre ONG'
-        });
-        infowindow.open(map, marker);
+        infowindow.open(map);
     }
 </script>
 -->
