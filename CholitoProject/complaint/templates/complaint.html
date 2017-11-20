@@ -6,12 +6,16 @@
 
 {% block content %}
     <form method="POST" enctype="multipart/form-data" action="{% url 'make-complaint' %}">
-         if (navigator.geolocation) {
+        <script> 
+        if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             }
+          }
+        }
+        </script>
         <input type="hidden" name="form.lat" value= pos.lat;>
         <input type="hidden" name="form.lng" value= pos.lng;>
         {% csrf_token %}
