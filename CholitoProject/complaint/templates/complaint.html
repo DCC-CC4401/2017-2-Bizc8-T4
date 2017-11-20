@@ -5,8 +5,7 @@
 {% block content-header %}Subir Denuncia{% endblock %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data" action="{% url 'make-complaint' %}">
-        <script> 
+     <script> 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -16,6 +15,8 @@
           }
         }
         </script>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'make-complaint' %}">
+       
         <input type="hidden" name="form.lat" value= pos.lat;>
         <input type="hidden" name="form.lng" value= pos.lng;>
         {% csrf_token %}
