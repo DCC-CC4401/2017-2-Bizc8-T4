@@ -7,82 +7,210 @@
 
 {% block content %}
 
-        {% if user.is_authenticated %}
-            <img src="{% static 'images/fav.jpg' %}" usemap="#image-map"/>
-            <map name="image-map">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-in' %}" coords="644,317,545,198"
-                      shape="rect">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-in' %}" coords="693,129,828,252"
-                      shape="rect">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-in' %}" coords="469,502,602,612"
-                      shape="rect">
-            </map>
-        {% else %}
-            <img src="{% static 'images/noFav.jpg' %}" usemap="#image-map"/>
-
-            <map name="image-map">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-out' %}" coords="830,258,696,117"
-                      shape="rect">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-out' %}" coords="551,204,643,307"
-                      shape="rect">
-                <area target="" alt="ong" title="ong" href="{% url 'user-ong-out' %}" coords="469,505,604,614"
-                      shape="rect">
-            </map>
-        {% endif %}
-
-{% endblock %}
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-Both of these plugins are recommended to enhance the
-user experience.
-
-<script>
-    function myMap() {
-        var mapCanvas = document.getElementById("map");
-        var myCenter = new google.maps.LatLng(-33.457394, -70.664601);
-        var centerOne = new google.maps.LatLng(-33.453291, -70.667269);
-        var centerTwo = new google.maps.LatLng(-33.455908, -70.674335);
-        var centerThree = new google.maps.LatLng(-33.466617, -70.676903);
-        var mapOptions = {center: myCenter, zoom: 15};
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-        var myCity = new google.maps.Circle({
-            center: myCenter,
-            radius: 15,
-            strokeColor: "#0000FF",
-            strokeOpacity: 0.7,
-            strokeWeight: 2,
-            fillColor: "#0000FF",
-            fillOpacity: 0.4
+<div id="map" style="width:1350px;height:700px;background:yellow"></div>
+	  {% if user.is_authenticated %}
+    <script>
+      	
+ 
+      function initMap() {
+        var infoWindow;
+        var beau850 = {lat: -33.4400124, lng: -70.6782374};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: beau850
         });
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-        myCity.setMap(map);
-        google.maps.event.addListener(map, 'click', function (event) {
-            placeMarker(map, event.latLng);
-        });
-        var infowindow = new google.maps.InfoWindow({
-            content: "ONG Favorita"
-        });
-        var markerOne = new google.maps.Marker({
-            position: centerOne,
-            icon: "favorito.png"
-        });
-        markerOne.setMap(map);
-        infowindow.open(map, markerOne);
-    }
-
-    function placeMarker(map, location) {
-        var marker = new google.maps.Marker({
-            position: location,
+        infoWindow = new google.maps.InfoWindow;
+	var marker1 = new google.maps.Marker({
+            position: {lat: -33.458773, lng: -70.663807},
+	    url: 'usuario-out-ong.html',
+	    icon: 'favorito.png',
             map: map
         });
-        var infowindow = new google.maps.InfoWindow({
-            content: 'Nombre ONG'
+	var marker2 = new google.maps.Marker({
+            position: {lat: -33.456773, lng: -70.665807},
+	    url: 'usuario-out-ong.html',
+            map: map
+
         });
-        infowindow.open(map, marker);
-    }
-</script>
--->
-<!-- Mapa de google
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKrwK5Ra7Lrbam0i1ifeMrlPHnN1Tctpk&callback=myMap"></script>
--->
+	var marker3 = new google.maps.Marker({
+            position: {lat: -33.458786, lng: -70.660819},
+	    url: 'usuario-out-ong.html',
+            map: map
+        });
+	var marker4 = new google.maps.Marker({
+            position: {lat: -33.468773, lng: -70.663807},
+	    url: 'usuario-out-ong.html',
+	    icon: '',
+            map: map
+        });
+	var marker5 = new google.maps.Marker({
+            position: {lat: -33.456773, lng: -70.635807},
+	    url: 'usuario-out-ong.html',
+            map: map
+
+        });
+	var marker6 = new google.maps.Marker({
+            position: {lat: -33.478786, lng: -70.670819},
+	    url: 'usuario-out-ong.html',
+            map: map
+        });
+
+	marker1.url= 'usuario-in-ong.html';
+	marker2.url= 'usuario-in-ong.html';
+	marker3.url= 'usuario-in-ong.html';
+	marker4.url= 'usuario-in-ong.html';
+	marker5.url= 'usuario-in-ong.html';
+	marker6.url= 'usuario-in-ong.html';
+
+
+	    google.maps.event.addListener(marker1, 'click', function() {
+	      window.location.href = marker1.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+
+        if (navigator.geolocation) {
+
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+                    var myCity = new google.maps.Circle({
+    center: pos,
+    radius: 15,
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.7,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4
+  });
+
+        myCity.setMap(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        var markerOne = new google.maps.Marker({
+            position: centerOne
+
+        });
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKrwK5Ra7Lrbam0i1ifeMrlPHnN1Tctpk&callback=initMap">
+    </script>
+	  {% else %}
+    <script>
+      	
+ 
+      function initMap() {
+        var infoWindow;
+        var beau850 = {lat: -33.4400124, lng: -70.6782374};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: beau850
+        });
+        infoWindow = new google.maps.InfoWindow;
+	var marker1 = new google.maps.Marker({
+            position: {lat: -33.458773, lng: -70.663807},
+	    url: 'usuario-out-ong.html',
+            map: map
+        });
+	var marker2 = new google.maps.Marker({
+            position: {lat: -33.456773, lng: -70.665807},
+	    url: 'usuario-out-ong.html',
+            map: map
+
+        });
+	var marker3 = new google.maps.Marker({
+            position: {lat: -33.458786, lng: -70.660819},
+	    url: 'usuario-out-ong.html',
+            map: map
+        });
+	var marker4 = new google.maps.Marker({
+            position: {lat: -33.468773, lng: -70.663807},
+	    url: 'usuario-out-ong.html',
+	    icon: '',
+            map: map
+        });
+	var marker5 = new google.maps.Marker({
+            position: {lat: -33.456773, lng: -70.635807},
+	    url: 'usuario-out-ong.html',
+            map: map
+
+        });
+	var marker6 = new google.maps.Marker({
+            position: {lat: -33.478786, lng: -70.670819},
+	    url: 'usuario-out-ong.html',
+            map: map
+        });
+
+	    google.maps.event.addListener(marker1, 'click', function() {
+	      window.location.href = marker1.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+	    google.maps.event.addListener(marker2, 'click', function() {
+	      window.location.href = marker2.url;
+	    });
+
+        if (navigator.geolocation) {
+
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+                    var myCity = new google.maps.Circle({
+    center: pos,
+    radius: 15,
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.7,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4
+  });
+
+        myCity.setMap(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        var markerOne = new google.maps.Marker({
+            position: centerOne
+
+        });
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKrwK5Ra7Lrbam0i1ifeMrlPHnN1Tctpk&callback=initMap">
+    </script>
+{% endblock %}
