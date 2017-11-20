@@ -9,7 +9,7 @@ class ComplaintForm(forms.ModelForm):
         fields = (
             'case',
             'animal_type',
-            'gender',
+            'sex',
             'color',
             'wounded',
             'directions',
@@ -22,7 +22,7 @@ class ComplaintForm(forms.ModelForm):
             'case': forms.Select(attrs={'id': 'case-input'}),
             'animal_type': forms.Select(attrs={'id': 'animal_type-input'}),
             'color': forms.TextInput(attrs={'id': 'color-input'}),
-            'gender': forms.RadioSelect(attrs={'id': "gender-input"}),
+            'sex': forms.RadioSelect(attrs={'id': "sex-input"}),
             'wounded': forms.RadioSelect(attrs={'id': "wounded-input"}),
             'lat': forms.HiddenInput(),
             'lng': forms.HiddenInput(),

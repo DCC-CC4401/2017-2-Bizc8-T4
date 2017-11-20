@@ -28,7 +28,7 @@ class Complaint(models.Model):
         (5, "Desechada"),
     )
 
-    GENDER_OPTIONS = (
+    SEX_OPTIONS = (
         (1, "Macho"),
         (2, "Hembra"),
     )
@@ -45,7 +45,7 @@ class Complaint(models.Model):
     directions = models.TextField(max_length=200, null=True)
     status = models.SmallIntegerField(choices=COMPLAINT_STATUS)
     animal_type = models.ForeignKey(AnimalType)
-    gender = models.SmallIntegerField(choices=GENDER_OPTIONS)
+    sex = models.SmallIntegerField(choices=SEX_OPTIONS)
     wounded = models.BooleanField(choices=WOUND_OPTIONS)
     color = models.TextField(max_length=50)
     municipality = models.ForeignKey(Municipality)
