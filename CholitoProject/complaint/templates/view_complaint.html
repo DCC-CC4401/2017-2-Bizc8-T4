@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th>Direccion:</th>
-            <td>{{ complaint.directions }}</td>
+            <td>{{ complaint.lat }} {{ complaint.lng }}</td>
             <th>Sexo:</th>
             <td>{{ complaint.get_gender_display }}</td>
             <th>¿Herido?:</th>
@@ -92,7 +92,5 @@
 
 
     </div>
-
-
 
 {% endblock %}
