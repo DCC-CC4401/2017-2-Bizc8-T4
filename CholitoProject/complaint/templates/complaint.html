@@ -6,7 +6,8 @@
 
 {% block content %}
     <form method="POST" enctype="multipart/form-data" action="{% url 'make-complaint' %}">
-
+        <input type="hidden" name="form.lat" value= position.coords.latitude;>
+        <input type="hidden" name="form.lng" value= position.coords.longitude;>
         {% csrf_token %}
         <div class="form-group">
             <label class="control-label col-sm-10" for="case-input">Tipo de maltrato:</label>
@@ -57,6 +58,7 @@
                 {{ image_form.complaint_image }}
             </div>
         </div>
+        
 
         {{ form.directions }}
         {{ form.lat }}
