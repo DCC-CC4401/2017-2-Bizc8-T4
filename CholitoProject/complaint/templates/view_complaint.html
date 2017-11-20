@@ -92,7 +92,46 @@
 
 
     </div>
+<div id="map" style="width:500px;height:500px;background:yellow"></div>
+    <script>
+        function initMap() {
+            var infoWindow;
+            var pos = {
+              lat: complaint.lat ,
+              lng: complaint.lng
+            }
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: pos
+            });
+        infoWindow = new google.maps.InfoWindow;
 
+    var marker1 = new google.maps.Marker({
+            position: pos ,
+	    url: 'usuario-out-ong.html',
+        map: map
+        });
+            
+    var myCity = new google.maps.Circle({
+    center: pos,
+    radius: 15,
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.7,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4
+  });
+        myCity.setMap(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+       
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKrwK5Ra7Lrbam0i1ifeMrlPHnN1Tctpk&callback=initMap">
+    </script>
+</div>
 
 
 {% endblock %}
