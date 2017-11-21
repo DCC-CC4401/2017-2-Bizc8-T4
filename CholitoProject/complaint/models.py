@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 from municipality.models import Municipality
@@ -49,6 +50,7 @@ class Complaint(models.Model):
     wounded = models.BooleanField(choices=WOUND_OPTIONS)
     color = models.TextField(max_length=50)
     municipality = models.ForeignKey(Municipality)
+    date = models.DateField(default=datetime.date.today, null=True)
 
     def __str__(self):
         return "Complaint #" + str(self.pk)

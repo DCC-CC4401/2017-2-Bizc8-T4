@@ -54,9 +54,7 @@ class SignUpView(View):
                 user=user_, avatar=avatar_form.cleaned_data.get('avatar'))
             username = user_form.cleaned_data.get('email')
             raw_password = user_form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('/')
+            return redirect('../login')
         messages.error(request,
                        "Ha ocurrido un error en el registro. Debes ingresar todos los campos para registrarse")
         return render(request, self.template_name, context=self.context)

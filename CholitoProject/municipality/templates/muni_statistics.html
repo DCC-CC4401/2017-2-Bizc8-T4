@@ -16,6 +16,7 @@
 
     <div id="viz"></div>
 
+
     <script>
         var data = [
             {% for key, value in stats.items %}
@@ -36,12 +37,22 @@
             .draw()
     </script>
 
+    <form action="" method="POST">
+    {% csrf_token %}
+
+        Desde
+        <input type="date" name="in">
+        Hasta
+        <input type="date" name="fin">
+        <input type="submit" value="ver">
+    </form>
     <script>
         var data = [
             {% for key, value in statsb.items %}
                 {
-                    "Estados": "{{ key }}", "Cantidad": {{value}}}
-                    {% if  key != "Desechada"  %},{% endif %}
+                    "name": "{{ key }}", "Cantidad": {{value}}
+                    {% if  key != "Venta ambulante"  %}},{% endif %}
+
             {% endfor %}
 
         ];
@@ -50,7 +61,7 @@
             .data(data)
             .type("bar")
             .id("name")
-            .x("Estados")
+            .x("name")
             .y("Cantidad")
             .draw()
     </script>
